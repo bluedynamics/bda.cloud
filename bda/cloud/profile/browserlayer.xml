@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="bda.cloud"
+     interface="bda.cloud.interfaces.ICloudLayer"
+ />
+</layers>

@@ -1,0 +1,26 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"   
+   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+   i18n_domain="bda.cloud">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="bda.cloud"
+      directory="profile"
+      description="Extension profile for bda.cloud"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+         
+  <include package=".browser" />
+
+  <adapter factory=".calculator.LinearCloud"
+           name="linear"  />
+
+  <adapter factory=".calculator.LogarithmicCloud"
+           name="logarithmic"  />
+
+  <adapter factory=".constrainthandlers.CookieConstraintHandler"
+           for="*
+                zope.publisher.interfaces.browser.IBrowserRequest"  />
+
+</configure>

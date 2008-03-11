@@ -1,0 +1,7 @@
+#cloud a:click {
+    evt-click-preventdefault: True;
+    action-server: renderCloudViewlet;
+    renderCloudViewlet-managername: kssAttr('managername');
+    renderCloudViewlet-viewletname: kssAttr('viewletname');
+    renderCloudViewlet-href: nodeAttr(href);
+}
