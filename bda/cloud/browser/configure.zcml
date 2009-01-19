@@ -1,25 +1,28 @@
 <configure xmlns="http://namespaces.zope.org/zope"
 		   xmlns:browser="http://namespaces.zope.org/browser"
            i18n_domain="bda.cloud">
-      
+
   <include package="kss.core" />
-      
+
   <browser:resourceDirectory
     name="bda.cloud.styles"
-      directory="styles"
-  />
-    
+      directory="styles" />
+
   <browser:resource
-    name="bda.cloud.kss"
-    file="cloud.kss"
-  />
-    
+    name="bda.cloud.js"
+    file="js/bda.cloud.js" />
+
+  <browser:viewlet
+    name="bda.cloud.viewlet"
+    manager="plone.app.layout.viewlets.interfaces.IContentViews"
+    layer="bda.cloud.interfaces.ICloudLayer"
+    template="viewlet.pt"
+	permission="zope2.View" />
   <browser:page
     for="*"
-    class=".cloudkss.CloudKSS"
-    attribute="renderCloudViewlet"
-    name="renderCloudViewlet"
-    permission="zope2.View"
-  />
-    
+    name="bda.cloud.viewlet-body"
+    class="bda.cloud.browser.viewlet.CloudView"
+    template="viewlet-body.pt"
+    permission="zope2.View" />
+
 </configure>

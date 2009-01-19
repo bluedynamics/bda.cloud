@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '1.0-beta'
+version = '1.0-beta2'
 
 setup(name='bda.cloud',
       version=version,

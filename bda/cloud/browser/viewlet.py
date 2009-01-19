@@ -4,17 +4,16 @@
 # Squarewave Computing - Blue Dynamics Alliance, Austria
 
 __author__ = """Jens Klein <jens@bluedynamics.com>
-                Robert Niederreiter <rnix@squarewave.at>"""
+                Robert Niederreiter <rnix@squarewave.at>
+                Johannes Raggam <johannes@bluedynamics.com>"""
+
 __docformat__ = 'plaintext'
+
+from Products.Five import BrowserView
 
 from zope import component
 from zope.component import getMultiAdapter
-
 from Acquisition import aq_inner
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
-from plone.app.layout.viewlets.common import ViewletBase
 
 from bda.cloud.interfaces import ICloudConfig
 from bda.cloud.interfaces import ICloudData
@@ -22,21 +21,21 @@ from bda.cloud.interfaces import ICloudCalculator
 from bda.cloud.interfaces import ICloudConstraintHandler
 from bda.cloud.interfaces import ICloudVocabulary
 
-class CloudViewlet(ViewletBase):
-    
-    render = ViewPageTemplateFile('viewlet.pt')
 
-    def update(self):
+class CloudView(BrowserView):
+
+    def __init__(self, context, request):
+        super(CloudView, self).__init__(context, request)
         self.config = ICloudConfig(self.context)
-        
+
     def cloud(self):
         """build the cloud for display according to settings."""
         contentcontext = aq_inner(self.context)
         clouddata = ICloudData(contentcontext)
-            
-        calculator = component.queryAdapter(clouddata, 
-                                            ICloudCalculator, 
-                                            self.config.rendertype)        
+
+        calculator = component.queryAdapter(clouddata,
+                                            ICloudCalculator,
+                                            self.config.rendertype)
         if calculator is None:
             return []
         constrainthandler = component.getMultiAdapter(
@@ -58,17 +57,6 @@ class CloudViewlet(ViewletBase):
                                          self.config.minsize
             entry['selected'] = key in constraints
             result.append( entry )
-        result.sort(cmp=lambda x, y: cmp(x['value'].lower(), 
+        result.sort(cmp=lambda x, y: cmp(x['value'].lower(),
                                          y['value'].lower()))
         return result
-    
-    @property
-    def kssattrs(self):
-        """Return the managername and the viewletname as kssattrs.
-        """
-        viewletname = self.__name__
-        managername = self.manager.__name__
-        pattern = 'kssattr-%s-%s'
-        return '%s %s' % (pattern % ('managername', managername),
-                          pattern % ('viewletname', viewletname))
-

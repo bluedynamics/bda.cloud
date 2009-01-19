@@ -1,0 +1,25 @@
+<table tal:condition="view/config/display">
+  <tr><td>
+	<ul>
+	  <li tal:repeat="entry view/cloud">
+
+		  <a tal:content="python:entry['value']"
+			 tal:condition="python: not entry['selected']"
+			 tal:attributes="style python:'font-size: %1.0fpx' % entry['fontsize'];
+							 href python:context.absolute_url() + '?cloudconstraint=' + entry['key']"
+			 class="cloudunselected" />
+
+		  <a tal:content="python:entry['value']"
+			 tal:condition="entry/selected"
+			 tal:attributes="style python:'font-size: %1.0fpx' % entry['fontsize'];
+							 href python:context.absolute_url() + '?cloudunconstraint=' + entry['key']"
+			 class="cloudselected" />
+
+	  </li>
+	  <li><a tal:content="view/config/resetlabel"
+			 tal:attributes="style python:'font-size: %spx' % view.config.resetsize;
+							 href python:context.absolute_url()+'?cloudreset=1'"  />
+	  </li>
+	</ul>
+  </td></tr>
+</table>

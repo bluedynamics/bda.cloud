@@ -1,5 +1,5 @@
 <configure
-   xmlns="http://namespaces.zope.org/zope"   
+   xmlns="http://namespaces.zope.org/zope"
    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
    i18n_domain="bda.cloud">
 
@@ -10,17 +10,18 @@
       description="Extension profile for bda.cloud"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-         
+
   <include package=".browser" />
 
   <adapter factory=".calculator.LinearCloud"
-           name="linear"  />
+           name="linear" />
 
   <adapter factory=".calculator.LogarithmicCloud"
-           name="logarithmic"  />
+           name="logarithmic" />
 
   <adapter factory=".constrainthandlers.CookieConstraintHandler"
+           provides=".interfaces.ICloudConstraintHandler"
            for="*
-                zope.publisher.interfaces.browser.IBrowserRequest"  />
+                zope.publisher.interfaces.browser.IBrowserRequest" />
 
 </configure>

@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <object>
-
-  <order manager="plone.abovecontent" skinname="Plone Default"
-         based-on="Plone Default">
+  <order manager="plone.contentviews" skinname="Plone Default">
     <viewlet name="bda.cloud.viewlet" insert-before="*" />
   </order>
-  
 </object>
