@@ -2,8 +2,6 @@
 		   xmlns:browser="http://namespaces.zope.org/browser"
            i18n_domain="bda.cloud">
 
-  <include package="kss.core" />
-
   <browser:resourceDirectory
     name="bda.cloud.styles"
       directory="styles" />
