@@ -27,6 +27,7 @@ setup(name='bda.cloud',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'cornerstone.browser',
       ],
       entry_points="""
       # -*- Entry points: -*-

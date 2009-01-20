@@ -3,6 +3,8 @@
    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
    i18n_domain="bda.cloud">
 
+  <include package="cornerstone.browser" />
+
   <genericsetup:registerProfile
       name="default"
       title="bda.cloud"
