@@ -1,4 +1,4 @@
-// GENERIC!!! put this function somewhere else
+// TODO: GENERIC!!! put this function somewhere else
 function getQueryFromUrl(url) {
 	// construct a jQuery conform url from any url with query params
 	url = decodeURI(url);
@@ -18,7 +18,7 @@ function getQueryFromUrl(url) {
 	return query;
 }
 
-// GENERIC!!! put this function somewhere else
+// TODO: GENERIC!!! put this function somewhere else
 function bdaSpinner(content_id) {
 	jQuery(content_id).html(jQuery("#kss-spinner").html());
 	jQuery(content_id + ' img').css({
