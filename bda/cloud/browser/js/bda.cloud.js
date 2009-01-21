@@ -1,6 +1,16 @@
-// TODO: GENERIC!!! put this function somewhere else
-function getQueryFromUrl(url) {
-	// construct a jQuery conform url from any url with query params
+bda = function() {};
+bda.Cloud = function() {};
+
+/* TODO: GENERIC!!! put this function somewhere else */
+bda.Cloud.prototype.getQueryFromUrl = function(url) {
+	/* Construct a jQuery conform query from any url with query params
+	 * Example:
+	 *   var query = getQueryFromUrl('http://xyz.com/?var_a=test&var_b=123');
+	 * Value of query:
+	 *   query == {'var_a':'test', 'var_b':'123'}
+	 * And:
+	 *   query.var_a == 'test'
+	 */
 	url = decodeURI(url);
 	var query = {};
 	var query_string = url.split('?')[1];
@@ -18,8 +28,9 @@ function getQueryFromUrl(url) {
 	return query;
 }
 
-// TODO: GENERIC!!! put this function somewhere else
-function bdaSpinner(content_id) {
+/* TODO: GENERIC!!! put this function somewhere else */
+/*
+bda.Cloud.prototype.spinner = function(content_id) {
 	jQuery(content_id).html(jQuery("#kss-spinner").html());
 	jQuery(content_id + ' img').css({
 		"display":"block",
@@ -29,6 +40,9 @@ function bdaSpinner(content_id) {
 		"margin-right":"auto"
 	});
 }
+*/
+
+var bdacloud = new bda.Cloud();
 
 function bdaRebindCloud() {
 
@@ -41,8 +55,8 @@ function bdaRebindCloud() {
 	jQuery("#cloud a").unbind();
 	jQuery("#cloud a").click(function(event){
 		event.preventDefault();
-		bdaSpinner("#cloud");
-		var query = getQueryFromUrl(jQuery(this).attr('href'));
+		cornerstone_spinner.show("#cloud");
+		var query = bdacloud.getQueryFromUrl(jQuery(this).attr('href'));
 		jQuery("#cloud").load("@@bda.cloud.viewlet-body", query, bdaCloudCallback);
 	});
 }
@@ -53,7 +67,7 @@ function bdaCloudCallback() {
 }
 function bdaLoadContent() {
 	/* OVERWRITE THIS FUNCTION IN YOUR SPECIFIC IMPLEMENTATION (THEME) */
-	bdaSpinner("#content div");
+	cornerstone_spinner.show("#content div");
 	jQuery("#content div").html(""); /* Default dummy behaviour */
 }
 
