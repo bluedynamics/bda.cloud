@@ -3,7 +3,8 @@
    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
    i18n_domain="bda.cloud">
 
-  <include package="cornerstone.browser" />
+  <include package="cornerstone.plone.profiles" />
+  <include package="cornerstone.ui.spinner" />
 
   <genericsetup:registerProfile
       name="default"

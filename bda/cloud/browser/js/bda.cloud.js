@@ -27,31 +27,9 @@ bda.Cloud.prototype.getQueryFromUrl = function(url) {
 	}
 	return query;
 }
-
-/* TODO: GENERIC!!! put this function somewhere else */
-/*
-bda.Cloud.prototype.spinner = function(content_id) {
-	jQuery(content_id).html(jQuery("#kss-spinner").html());
-	jQuery(content_id + ' img').css({
-		"display":"block",
-		"margin-top":"20px",
-		"margin-bottom":"20px",
-		"margin-left":"auto",
-		"margin-right":"auto"
-	});
-}
-*/
-
 var bdacloud = new bda.Cloud();
 
 function bdaRebindCloud() {
-
-	/*jQuery("#cloud").unbind();
-	jQuery("#cloud").ajaxComplete(function(request, settings){
-		// THIS ONE DOES NOT WORK.
-		// ajaxComplete event seems to be fired continiously
-	});*/
-
 	jQuery("#cloud a").unbind();
 	jQuery("#cloud a").click(function(event){
 		event.preventDefault();
@@ -60,7 +38,6 @@ function bdaRebindCloud() {
 		jQuery("#cloud").load("@@bda.cloud.viewlet-body", query, bdaCloudCallback);
 	});
 }
-
 function bdaCloudCallback() {
 	bdaLoadContent();
 	bdaRebindCloud();
@@ -70,7 +47,6 @@ function bdaLoadContent() {
 	cornerstone_spinner.show("#content div");
 	jQuery("#content div").html(""); /* Default dummy behaviour */
 }
-
 jQuery(document).ready(function(){
 	bdaRebindCloud();
 });
