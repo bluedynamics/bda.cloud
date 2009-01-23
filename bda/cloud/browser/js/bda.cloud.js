@@ -6,10 +6,6 @@ bda.Cloud = function(cloud_selector, content_selector, content_url,
 	this.content_url = content_url;
 	if (!content_query) content_query = {};
 	this.content_query = content_query;
-	/* for cornerstone.ui.result
-	{
-		'baseurl':'blog_view' // -> abs url
-	} */
 };
 
 /* TODO: GENERIC!!! put this function somewhere else */
@@ -62,16 +58,8 @@ bda.Cloud.prototype.rebindCloud = function() {
 	});
 }
 
-/* DOES NOT WORK, because no access to prototype object... ?? */
-/*
-bda.Cloud.prototype.cloudCallback = function () {
-	cornerstone_spinner.show(bdac.content_selector);
-	jQuery(bdac.content_selector).load(bdac.content_url, bdac.content_query);
-	bdac.rebindCloud();
-}
-*/
-
 /* INITIALIZE IN YOUR SPECIFIC IMPLEMENTATION LIKE SO: */
+/* It should be possible to instantiate more than one cloud */
 /*
 jQuery(document).ready(function(){
 	var bdacloud = new bda.Cloud(
