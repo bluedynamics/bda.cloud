@@ -1,5 +1,16 @@
 bda = function() {};
-bda.Cloud = function() {};
+bda.Cloud = function(cloud_selector, content_selector, content_url,
+					 /* optional */ content_query) {
+    this.cloud_selector = cloud_selector;
+	this.content_selector = content_selector;
+	this.content_url = content_url;
+	if (!content_query) content_query = {};
+	this.content_query = content_query;
+	/* for cornerstone.ui.result
+	{
+		'baseurl':'blog_view' // -> abs url
+	} */
+};
 
 /* TODO: GENERIC!!! put this function somewhere else */
 bda.Cloud.prototype.getQueryFromUrl = function(url) {
@@ -27,26 +38,48 @@ bda.Cloud.prototype.getQueryFromUrl = function(url) {
 	}
 	return query;
 }
-var bdacloud = new bda.Cloud();
-
-function bdaRebindCloud() {
-	jQuery("#cloud a").unbind();
-	jQuery("#cloud a").click(function(event){
+bda.Cloud.prototype.rebindCloud = function() {
+	var bdac = this;
+    jQuery(bdac.cloud_selector + " a").unbind();
+	jQuery(bdac.cloud_selector + " a").click(function(event){
 		event.preventDefault();
-		cornerstone_spinner.show("#cloud");
-		var query = bdacloud.getQueryFromUrl(jQuery(this).attr('href'));
-		jQuery("#cloud").load("@@bda.cloud.viewlet-body", query, bdaCloudCallback);
+		cornerstone_spinner.show(bdac.cloud_selector);
+		var query = bdac.getQueryFromUrl(jQuery(this).attr('href'));
+		/* jQuery(bdac.cloud_selector).load("@@bda.cloud.viewlet-body", query,
+						                     bdac.cloudCallback);
+			when calling bdac.cloudCallback, bdac.cloudCallback has no access
+			to bdac variable anymore.
+			with following inner function it has.
+			there may be another solution when using closures or that stuff.
+		*/
+		jQuery(bdac.cloud_selector).load("@@bda.cloud.viewlet-body", query,
+			function () {
+				cornerstone_spinner.show(bdac.content_selector);
+				jQuery(bdac.content_selector).load(bdac.content_url, bdac.content_query);
+				bdac.rebindCloud();
+			}
+		);
 	});
 }
-function bdaCloudCallback() {
-	bdaLoadContent();
-	bdaRebindCloud();
+
+/* DOES NOT WORK, because no access to prototype object... ?? */
+/*
+bda.Cloud.prototype.cloudCallback = function () {
+	cornerstone_spinner.show(bdac.content_selector);
+	jQuery(bdac.content_selector).load(bdac.content_url, bdac.content_query);
+	bdac.rebindCloud();
 }
-function bdaLoadContent() {
-	/* OVERWRITE THIS FUNCTION IN YOUR SPECIFIC IMPLEMENTATION (THEME) */
-	cornerstone_spinner.show("#content div");
-	jQuery("#content div").html(""); /* Default dummy behaviour */
-}
+*/
+
+/* INITIALIZE IN YOUR SPECIFIC IMPLEMENTATION LIKE SO: */
+/*
 jQuery(document).ready(function(){
-	bdaRebindCloud();
+	var bdacloud = new bda.Cloud(
+		'#cloud', // CLOUDSELECTOR
+		'#content', // CONTENTSELECTOR
+		'@@blogkssview', // CONTENT SCHNIPSEL URL
+		{} // ADDITIONAL CONTENT URL QUERY PARAMETER
+	);
+	bdacloud.rebindCloud();
 });
+*/
