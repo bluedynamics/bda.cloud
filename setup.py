@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '1.0-beta2'
+version = '2.0'
 
 setup(name='bda.cloud',
       version=version,
@@ -15,7 +15,7 @@ setup(name='bda.cloud',
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='web zope plone theme',
+      keywords='',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
       url='http://svn.bluedynamics.net/svn/internal',

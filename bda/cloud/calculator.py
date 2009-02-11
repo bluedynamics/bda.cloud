@@ -40,8 +40,8 @@ class LinearCloud(object):
 class LogarithmicCloud(LinearCloud):
     """a cloud with logarithmic weigthing.
 
-    thx to Mr.Anders for his article at
-    http://thraxil.com/users/anders/posts/2005/12/13/scaling-tag-clouds/
+    thx to Anders Pearson for his article at
+    http://thraxil.org/users/anders/posts/2005/12/13/scaling-tag-clouds/
     """
 
     interface.implements(interfaces.ICloudCalculator)
