@@ -1,10 +1,5 @@
-#
-# Copyright 2008, Blue Dynamics Alliance, Austria - www.bluedynamics.com
-#
-# GNU General Public Licence Version 2 or later - see LICENCE.GPL
-
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plaintext'
+# Copyright 2008-2009, BlueDynamics Alliance, Austria - http://bluedynamics.com
+# GNU General Public License Version 2
 
 import types
 from zope.interface import implements

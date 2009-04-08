@@ -1,3 +1,6 @@
+// Copyright 2008-2009, BlueDynamics Alliance, Austria - http://bluedynamics.com
+// GNU General Public License Version 2 
+
 bda = function() {};
 bda.Cloud = function(cloud_selector, content_selector, content_url,
 					 /* optional */ content_query) {
@@ -58,7 +61,7 @@ bda.Cloud.prototype.rebindCloud = function() {
 	});
 }
 
-/* INITIALIZE IN YOUR SPECIFIC IMPLEMENTATION LIKE SO: */
+/* INITIALIZE IN YOUR SPECIFIC IMPLEMENTATION THIS  WAY: */
 /* It should be possible to instantiate more than one cloud */
 /*
 jQuery(document).ready(function(){

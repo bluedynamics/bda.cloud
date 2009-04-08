@@ -1,12 +1,5 @@
-#
-# Copyright 2007 by Blue Dynamics Alliance, Klein & Partner KEG, Austria
-#
-# GNU General Public License (GPL)
-#
-
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plaintext'
-__version__ = 1.0
+# Copyright 2008-2009, BlueDynamics Alliance, Austria - http://bluedynamics.com
+# GNU General Public License Version 2 
 
 from zope.interface import implements
 from interfaces import ICloudData

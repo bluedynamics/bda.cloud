@@ -1,3 +1,6 @@
+# Copyright 2008-2009, BlueDynamics Alliance, Austria - http://bluedynamics.com
+# GNU General Public License Version 2
+
 from setuptools import setup, find_packages
 
 version = '2.0'

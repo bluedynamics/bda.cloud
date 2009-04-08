@@ -1,13 +1,5 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright 2007, 2008
-# Squarewave Computing - Blue Dynamics Alliance, Austria
-
-__author__ = """Jens Klein <jens@bluedynamics.com>
-                Robert Niederreiter <rnix@squarewave.at>
-                Johannes Raggam <johannes@bluedynamics.com>"""
-
-__docformat__ = 'plaintext'
+# Copyright 2008-2009, BlueDynamics Alliance, Austria - http://bluedynamics.com
+# GNU General Public License Version 2
 
 from Products.Five import BrowserView
 
